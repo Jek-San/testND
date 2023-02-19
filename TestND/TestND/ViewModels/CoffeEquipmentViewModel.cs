@@ -1,15 +1,32 @@
-﻿using System;
+﻿using MvvmHelpers;
+using MvvmHelpers.Commands;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Forms;
+
 
 namespace TestND.ViewModels
 {
-    public class CoffeEquipmentViewModel : BindableObject
+    public class CoffeEquipmentViewModel : ViewModelBase
     {
+        public ObservableCollection<string> Coffee { get; set; }
         public CoffeEquipmentViewModel() { 
 			IncreaseCount = new Command(OnIncrease);
+            CallServerCommand = new AsyncCommand(CallServer);
+            Title = "Coffe Equipment";
+
+        }
+
+        public ICommand CallServerCommand { get;  }
+
+        async Task CallServer()
+        {
+            Coffee.Add("Yes Pls");
+            Coffee.Add("Sanger");
+            Coffee.Add("Expresso");
 
         }
         void OnIncrease()
@@ -27,18 +44,8 @@ namespace TestND.ViewModels
 
         public string CountDisplay
         {
-            get => countDisplay; set
-            {
-                if (value == countDisplay)
-                {
-                    return;
-                }
-                else
-                {
-                    countDisplay = value;
-                    OnPropertyChanged();
-                }
-            }
+            get => countDisplay;
+            set => SetProperty(ref countDisplay, value);
         }
     }
 }
