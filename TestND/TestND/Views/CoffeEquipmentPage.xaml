@@ -6,10 +6,22 @@
              >
     
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+        <Grid RowDefinitions="*, Auto, Auto, *">
+           
+            
+            <Label Grid.Row="1" 
+                   x:Name="LabelCount"
+                   FontSize="Large"
+                   BackgroundColor="DarkOrange"
+                Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+            <Button Grid.Row="2"
+                    Clicked="BtnClick_Clicked"
+                    x:Name="BtnClick"
+                Text="Click Me"
+                />
+            
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

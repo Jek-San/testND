@@ -15,6 +15,13 @@ namespace TestND.Views
 		public CoffeEquipmentPage ()
 		{
 			InitializeComponent ();
+			LabelCount.Text = "Hello From Code Behinds";
 		}
-	}
+		int count = 0;
+        private void BtnClick_Clicked(object sender, EventArgs e)
+        {
+			count++;
+			LabelCount.Text = $"You clicked {count} time(s)";
+        }
+    }
 }
